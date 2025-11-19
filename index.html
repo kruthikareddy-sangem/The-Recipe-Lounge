@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Lounge Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Identity Services -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+
+<!-- LOGIN PAGE -->
+<div id="loginPage" class="login-page">
+  <div class="login-container">
+    <h2>Welcome to Recipe Lounge</h2>
+
+    <div class="auth-toggle">
+      <button id="signinBtn" class="active" onclick="showSignIn()">Sign In</button>
+      <button id="signupBtn" onclick="showSignUp()">Create Account</button>
+    </div>
+
+    <!-- Email/Password Sign-In -->
+    <div id="signinForm">
+      <input type="email" id="email" placeholder="Email">
+      <input type="password" id="password" placeholder="Password">
+      <button onclick="login()">Sign In</button>
+    </div>
+
+    <!-- Create Account Form -->
+    <div id="signupForm" style="display:none;">
+      <input type="text" id="name" placeholder="Name">
+      <input type="email" id="signupEmail" placeholder="Email">
+      <input type="password" id="signupPassword" placeholder="Password">
+      <button onclick="createAccount()">Create Account</button>
+    </div>
+
+    <!-- Google Sign-In -->
+    <div id="googleLogin">
+      <div id="g_id_onload"
+           data-client_id="YOUR_CLIENT_ID_HERE"
+           data-callback="handleCredentialResponse"
+           data-auto_prompt="false">
+      </div>
+      <div class="g_id_signin" data-type="standard"></div>
+    </div>
+  </div>
+</div>
+
+<!-- DASHBOARD / MAIN PAGE -->
+<div id="mainPage" style="display:none;">
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">🍴 Recipe Lounge</div>
+    <ul class="nav-links">
+      <li id="userInfo"></li>
+      <li><a href="#" onclick="logout()">Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- Dashboard Hero -->
+  <section class="hero">
+    <h1>Welcome to Your Recipe Dashboard 🍳</h1>
+    <p>Explore delicious recipes and discover new cuisines!</p>
+  </section>
+
+  <!-- Search -->
+  <div class="container">
+    <input type="text" id="searchInput" placeholder="Search recipe...">
+    <button onclick="searchRecipe()">Search</button>
+    <div id="results"></div>
+  </div>
+
+  <!-- Categories -->
+  <section id="categories" class="filters">
+    <h2>Browse by Category</h2>
+    <button onclick="loadCategory('Starter')">🥗 Starters</button>
+    <button onclick="loadCategory('Dessert')">🍰 Desserts</button>
+    <button onclick="loadCategory('Seafood')">🦐 Seafood</button>
+    <button onclick="loadCategory('Vegetarian')">🥦 Vegetarian</button>
+    <button onclick="loadCategory('Breakfast')">🍳 Breakfast</button>
+  </section>
+
+  <!-- Cuisines -->
+  <section id="cuisines" class="filters">
+    <h2>Browse by Cuisine</h2>
+    <button onclick="loadCuisine('Indian')">🇮🇳 Indian</button>
+    <button onclick="loadCuisine('Italian')">🇮🇹 Italian</button>
+    <button onclick="loadCuisine('Chinese')">🇨🇳 Chinese</button>
+    <button onclick="loadCuisine('Mexican')">🇲🇽 Mexican</button>
+    <button onclick="loadCuisine('American')">🇺🇸 American</button>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Recipe Lounge | Made with ❤ for food lovers</p>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
